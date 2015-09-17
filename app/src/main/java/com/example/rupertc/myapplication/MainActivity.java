@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
     private TextView textView;
     public Switch switch1;
     public ImageView imageView;
+    public ImageView imageViewTask;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,6 @@ public class MainActivity extends Activity {
         switch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.e("UDPServer" , "Click!");
-                //imageView.setImageResource(R.drawable.wheel2);
                 if(imageView.getVisibility() == View.INVISIBLE) {
                     imageView.setVisibility(View.VISIBLE);
                 }
@@ -115,16 +114,18 @@ public class MainActivity extends Activity {
         @Override
         protected void onProgressUpdate(Void... values) {
             //Log.e("UDPSERVER","onProgressUpdate: " + lText);
+            imageViewTask = (ImageView) findViewById(R.id.imageView2);
             Toast.makeText(getApplicationContext(),lText, Toast.LENGTH_SHORT).show();
-            if(imageView.getVisibility() == View.INVISIBLE) {
+            if(imageViewTask.getVisibility() == View.INVISIBLE) {
                 Log.e("UDPSERVER","Making the wheel visible!");
-                imageView.setVisibility(View.VISIBLE);
+                imageViewTask.setVisibility(View.VISIBLE);
             }
             else
             {
                 Log.e("UDPSERVER","Making the wheel invisible!");
-                imageView.setVisibility(View.INVISIBLE);
+                imageViewTask.setVisibility(View.INVISIBLE);
             }
+            super.onProgressUpdate();
         }
     }
     /*** END ***/
