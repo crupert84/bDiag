@@ -1,24 +1,54 @@
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="@color/bertrandt_pantone80"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="@string/fzgstatus_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
 
-</RelativeLayout>-->
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:orientation="vertical" >
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/car2"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="car"/>
 
-<TextView
-    android:id="@+id/text1"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainoptionListView"
+        android:choiceMode="singleChoice"
+        tools:listitem="@android:layout/simple_list_item_1"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/imageView" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/wheel2"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simulate Error"
+        android:id="@+id/switch1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        tools:context="com.neoecosystem.samplex.SwitchActivity"/>
+
+</RelativeLayout>

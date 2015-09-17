@@ -14,20 +14,43 @@ import java.net.SocketException;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
 
 public class MainActivity extends Activity {
     /** Called when the activity is first created. */
     private TextView textView;
+    public Switch switch1;
+    public ImageView imageView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView) findViewById(R.id.text1);
+        //textView = (TextView) findViewById(R.id.text1);
         //runUdpServer();
         new UDPServerTask().execute("");
 
+        // Testing Switch for red wheel
+        imageView = (ImageView) findViewById(R.id.imageView2);
+        switch1 = (Switch) findViewById(R.id.switch1);
+        switch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Log.e("UDPServer" , "Click!");
+                //imageView.setImageResource(R.drawable.wheel2);
+                if(imageView.getVisibility() == View.INVISIBLE) {
+                    imageView.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    imageView.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
     private static final int UDP_SERVER_PORT = 11111;
     private static final int MAX_UDP_DATAGRAM_LEN = 1500;
@@ -93,10 +116,19 @@ public class MainActivity extends Activity {
         protected void onProgressUpdate(Void... values) {
             //Log.e("UDPSERVER","onProgressUpdate: " + lText);
             Toast.makeText(getApplicationContext(),lText, Toast.LENGTH_SHORT).show();
+            if(imageView.getVisibility() == View.INVISIBLE) {
+                Log.e("UDPSERVER","Making the wheel visible!");
+                imageView.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                Log.e("UDPSERVER","Making the wheel invisible!");
+                imageView.setVisibility(View.INVISIBLE);
+            }
         }
     }
     /*** END ***/
-
+/*
     private void runUdpServer() {
         String lText;
         byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
@@ -124,4 +156,5 @@ public class MainActivity extends Activity {
         }
 
     }
+    */
 }
